@@ -155,6 +155,14 @@ bool TStellarData::save(const std::string& fname, const std::string& group, cons
 	att_b.write(att_dtype, &b);
 
 	att_dtype = H5::PredType::NATIVE_DOUBLE;
+	H5::Attribute att_pi = dataset.createAttribute("pi", att_dtype, att_dspace);
+	att_pi.write(att_dtype, &pi);
+
+	att_dtype = H5::PredType::NATIVE_DOUBLE;
+	H5::Attribute att_pierr = dataset.createAttribute("pierr", att_dtype, att_dspace);
+	att_pierr.write(att_dtype, &pierr);
+
+	att_dtype = H5::PredType::NATIVE_DOUBLE;
 	H5::Attribute att_EBV = dataset.createAttribute("EBV", att_dtype, att_dspace);
 	att_EBV.write(att_dtype, &EBV);
 
@@ -352,6 +360,14 @@ bool TStellarData::load(const std::string& fname, const std::string& group, cons
 	att = dataset.openAttribute("b");
 	att_dtype = H5::PredType::NATIVE_DOUBLE;
 	att.read(att_dtype, reinterpret_cast<void*>(&b));
+
+	att = dataset.openAttribute("pi");
+	att_dtype = H5::PredType::NATIVE_DOUBLE;
+	att.read(att_dtype, reinterpret_cast<void*>(&pi));
+
+	att = dataset.openAttribute("pierr");
+	att_dtype = H5::PredType::NATIVE_DOUBLE;
+	att.read(att_dtype, reinterpret_cast<void*>(&pierr));
 
 	att = dataset.openAttribute("EBV");
 	att_dtype = H5::PredType::NATIVE_DOUBLE;

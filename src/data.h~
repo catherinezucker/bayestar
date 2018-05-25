@@ -97,8 +97,6 @@ struct TStellarData {
 			obj_id = rhs.obj_id;
 			l = rhs.l;
 			b = rhs.b;
-			pi = rhs.pi;
-			pierr=rhs.pierr;
 			for(unsigned int i=0; i<NBANDS; i++) {
 				m[i] = rhs.m[i];
 				err[i] = rhs.err[i];
